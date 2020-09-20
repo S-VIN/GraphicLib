@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/build",
-  "command": "/usr/bin/clang++-6.0    -g   -o CMakeFiles/graphiclib.dir/main.cpp.o -c /home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/main.cpp",
-  "file": "/home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/main.cpp"
-}
-]
