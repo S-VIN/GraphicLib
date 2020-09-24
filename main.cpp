@@ -2,24 +2,18 @@
 #include <vector>
 using namespace sf;
 
-/*class Printer{
-private:
-    RenderWindow* window;
+
+class Printer : public RenderWindow{
+public:
     int resolutionX;
     int resolutionY;
 public:
-    Printer(RenderWindow* window, int X = 100, int Y = 100){
-        Printer: window = window;
+    Printer(int X = 1000, int Y = 1000) : RenderWindow(VideoMode(X, Y), "visualisation"){
         resolutionX = X;
         resolutionY = Y;
     }
 
-    void print(){
-        CircleShape shape(100.f, 4);
-        shape.setFillColor(sf::Color::Green);
-        window->draw(shape);
-    }
-};*/
+};
 
 
 
@@ -27,11 +21,14 @@ public:
 
 int main()
 {
-    RenderWindow window(VideoMode(99, 100), "SFML works!");
+    
+
+    Printer printer();
+    std:: cout << printer.resolutionX;
     std::vector<RectangleShape> mas(100*100); 
     for(int i = 0; i < 100 * 100; i++){
-        mas[i].setSize(sf::Vector2f(1, 1));
-        mas[i].setPosition(i / 100, i % 100);
+        mas[i].setSize(sf::Vector2f(10, 10));
+        mas[i].setPosition(i / 10, (i % 100)*10);
         if(((i / 100) + (i % 2)) % 2 == 0){
             mas[i].setFillColor(Color::White );
         }else{
@@ -42,23 +39,23 @@ int main()
     RectangleShape rectangle;
     
 
-    while (window.isOpen())
+    /*while (printer.isOpen())
     {
         sf::Event event;
-        while (window.pollEvent(event))
+        while (printer.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                window.close();
+                printer.close();
         }
 
-        window.clear();
+        printer.clear();
         for(auto item : mas){
-            window.draw(item);
+            printer.draw(item);
         }
         
         
-        window.display();
-    }
+        printer.display();
+    }*/
 
     return 0;
 }
