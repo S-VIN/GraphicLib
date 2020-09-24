@@ -1,17 +1,63 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <iostream>
 using namespace sf;
 
 
 class Printer : public RenderWindow{
-public:
+private:
+    int pixelSize = 10;
     int resolutionX;
     int resolutionY;
+    Color* buffer;
+
+    Color getBufferItem(int X, int Y){
+        return buffer[Y*resolutionX + X];
+    }
+
+    void setBufferItem(int X, int Y, Color item = Color::Black){
+        buffer[Y*resolutionX + X] = item;
+    }
+
+    void printSquare(int Xpos, int Ypos, Color color = Color::Black){
+        RectangleShape rect;
+        rect.setSize(Vector2f(pixelSize, pixelSize));
+        rect.setPosition(Xpos * pixelSize, Ypos * pixelSize);
+        rect.setFillColor(color);
+        draw(rect);
+        display();
+    }
+
+
+
 public:
-    Printer(int X = 1000, int Y = 1000) : RenderWindow(VideoMode(X, Y), "visualisation"){
+    Printer(int X = 100, int Y = 100) : RenderWindow(VideoMode(X * 10, Y * 10), "visualisation"){
         resolutionX = X;
         resolutionY = Y;
+        for(int i = 0; i < Y; i++){
+            buffer = new Color[X * Y];
+        }
     }
+
+void paint(int X, int Y, Color color = Color::Black){
+    printSquare(X, Y, color);
+}
+
+void clearBuffer(){
+    for(int i = 0; i < resolutionX * resolutionY; i++){
+        buffer[i] = Color::White;
+    }
+}
+
+    void printBuffer(){
+        clear();
+        for(int i = 0; i < resolutionX; i++)
+            for(int j = 0; j < resolutionY; j++){
+                printSquare(i, j, Color::Red);
+            }
+    }
+
+
 
 };
 
@@ -21,42 +67,14 @@ public:
 
 int main()
 {
+    Printer printer;
+
+    printer.clearBuffer();
+    printer.paint(50, 50, Color::Magenta);
+    for(;;){}
     
 
-    Printer printer();
-    std:: cout << printer.resolutionX;
-    std::vector<RectangleShape> mas(100*100); 
-    for(int i = 0; i < 100 * 100; i++){
-        mas[i].setSize(sf::Vector2f(10, 10));
-        mas[i].setPosition(i / 10, (i % 100)*10);
-        if(((i / 100) + (i % 2)) % 2 == 0){
-            mas[i].setFillColor(Color::White );
-        }else{
-            mas[i].setFillColor(Color::Black );
-        }
-    }
-
-    RectangleShape rectangle;
     
-
-    /*while (printer.isOpen())
-    {
-        sf::Event event;
-        while (printer.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                printer.close();
-        }
-
-        printer.clear();
-        for(auto item : mas){
-            printer.draw(item);
-        }
-        
-        
-        printer.display();
-    }*/
-
     return 0;
 }
 
