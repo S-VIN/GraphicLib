@@ -15,11 +15,11 @@ private:
         return buffer[Y*resolutionX + X];
     }
 
-    void setBufferItem(int X, int Y, Color item = Color::Black){
+    void setBufferItem(int X, int Y, Color item = Color::White){
         buffer[Y*resolutionX + X] = item;
     }
 
-    void printSquare(int Xpos, int Ypos, Color color = Color::Black){
+    void printSquare(int Xpos, int Ypos, Color color = Color::White){
         RectangleShape rect;
         rect.setSize(Vector2f(pixelSize, pixelSize));
         rect.setPosition(Xpos * pixelSize, Ypos * pixelSize);
@@ -39,42 +39,49 @@ public:
         }
     }
 
+
 void paint(int X, int Y, Color color = Color::Black){
     printSquare(X, Y, color);
 }
 
+
 void clearBuffer(){
     for(int i = 0; i < resolutionX * resolutionY; i++){
-        buffer[i] = Color::White;
+        buffer[i] = Color::Black;
     }
 }
 
-    void printBuffer(){
+
+void printBuffer(){
         clear();
         for(int i = 0; i < resolutionX; i++)
             for(int j = 0; j < resolutionY; j++){
-                printSquare(i, j, Color::Red);
+                printSquare(i, j, buffer[i,j]);
             }
-    }
-
-
-
+        }
 };
 
 
 
 
 
-int main()
-{
+int main(){
     Printer printer;
 
     printer.clearBuffer();
-    printer.paint(50, 50, Color::Magenta);
-    for(;;){}
     
+    for(int i = 0; i < 100; i++){
+        printer.paint(i, i, Color::White);
+    }
 
-    
+    while (printer.isOpen()){
+        sf::Event event;
+        while (printer.pollEvent(event)){
+            if (event.type == sf::Event::Closed)
+                printer.close();
+        }
+    }
+    return EXIT_SUCCESS;
     return 0;
 }
 
