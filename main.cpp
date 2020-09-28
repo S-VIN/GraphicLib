@@ -34,7 +34,6 @@ public:
     rect.setPosition(Ypos * pixelSize, Xpos * pixelSize);
     rect.setFillColor(color);
     draw(rect);
-    display();
   }
 
   void clearBuffer() {
@@ -49,11 +48,12 @@ public:
   }
 
   void printBuffer() {
-    clear();
+    clear(Color::Blue);
     for (int i = 0; i < resolutionX; i++)
       for (int j = 0; j < resolutionY; j++) {
         printSquare(i, j, buffer[i][j]);
       }
+    display();
   }
 };
 
