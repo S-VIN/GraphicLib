@@ -1,74 +1,13 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include <vector>
+#include "printer.h"
 using namespace sf;
 
-class Printer : public RenderWindow {
-private:
-  const int pixelSize = 10;
-  int resolutionX;
-  int resolutionY;
-  std::vector <std::vector<Color>> buffer;
-
-  Color getBufferItem(int X, int Y) { return buffer[X][Y]; }
-
-  void setBufferItem(int X, int Y, Color item = Color::White) {
-    buffer[X][Y] = item;
-  }
-
-  void paint(int X, int Y, Color color = Color::Black) {
-    printSquare(X, Y, color);
-  }
-
-public:
-  Printer(int X = 100, int Y = 100)
-      : RenderWindow(VideoMode(X * 10, Y * 10), "visualisation") {
-    resolutionX = X;
-    resolutionY = Y;
-    buffer.resize(resolutionX, std::vector<Color>(resolutionY));
-  }
-
-  void printSquare(int Xpos, int Ypos, Color color = Color::White) {
-    RectangleShape rect;
-    rect.setSize(Vector2f(pixelSize, pixelSize));
-    rect.setPosition(Ypos * pixelSize, Xpos * pixelSize);
-    rect.setFillColor(color);
-    draw(rect);
-  }
-
-  void clearBuffer() {
-    for(int i = 0; i < resolutionX; i++)
-      for(int j = 0; j < resolutionY; j++){
-        buffer[i][j] = Color::Black;
-      }
-  }
-
-  void setPixel(int x, int y, Color color = Color::White){
-    setBufferItem(x, y, color);
-  }
-
-  void printBuffer() {
-    clear(Color::Blue);
-    for (int i = 0; i < resolutionX; i++)
-      for (int j = 0; j < resolutionY; j++) {
-        printSquare(i, j, buffer[i][j]);
-      }
-    display();
-  }
-};
-
-void print(Printer &printer) {
-  printer.setPixel(0, 0, Color::Red);
-  printer.setPixel(98, 98, Color::Red);
-  printer.printBuffer();
-}
+void print(Printer &);
 
 int main() {
   Printer printer;
   while (printer.isOpen()) {
-      printer.setPixel(0, 0, Color::Red);
-  printer.setPixel(98, 98, Color::Red);
-  printer.printBuffer();
+    print(printer);
+    printer.setPixel(50, 50, Color::Red);
     sf::Event event;
     while (printer.pollEvent(event)) {
       if (event.type == sf::Event::Closed)
@@ -77,4 +16,13 @@ int main() {
   }
   return EXIT_SUCCESS;
   return 0;
+}
+
+void print(Printer &printer) {
+  // printer.clearBuffer();
+  printer.setPixel(0, 0, Color::Red);
+  printer.setPixel(50, 50, Color::Red);
+  printer.setPixel(50, 50, Color::Red);
+  printer.setPixel(99, 99, Color::Red);
+  printer.show();
 }
