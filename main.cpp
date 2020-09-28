@@ -6,7 +6,7 @@ using namespace sf;
 
 class Printer : public RenderWindow{
 private:
-    int pixelSize = 10;
+    const int pixelSize = 10;
     int resolutionX;
     int resolutionY;
     Color* buffer;
@@ -19,14 +19,7 @@ private:
         buffer[Y*resolutionX + X] = item;
     }
 
-    void printSquare(int Xpos, int Ypos, Color color = Color::White){
-        RectangleShape rect;
-        rect.setSize(Vector2f(pixelSize, pixelSize));
-        rect.setPosition(Xpos * pixelSize, Ypos * pixelSize);
-        rect.setFillColor(color);
-        draw(rect);
-        display();
-    }
+
 
 
 
@@ -37,6 +30,15 @@ public:
         for(int i = 0; i < Y; i++){
             buffer = new Color[X * Y];
         }
+    }
+
+    void printSquare(int Xpos, int Ypos, Color color = Color::White){
+        RectangleShape rect;
+        rect.setSize(Vector2f(pixelSize, pixelSize));
+        rect.setPosition(Ypos * pixelSize, Xpos * pixelSize);
+        rect.setFillColor(color);
+        draw(rect);
+        display();
     }
 
 
@@ -63,6 +65,14 @@ void printBuffer(){
 
 
 
+void print(Printer& printer){
+    for(int i = 0; i < 100; i++){
+        printer.paint(i, i, Color::White);
+    }
+
+    printer.paint(51, 51, Color::Red);
+}
+
 
 
 int main(){
@@ -70,9 +80,8 @@ int main(){
 
     printer.clearBuffer();
     
-    for(int i = 0; i < 100; i++){
-        printer.paint(i, i, Color::White);
-    }
+    
+     //printer.paint(49, 49, Color::Red);
 
     while (printer.isOpen()){
         sf::Event event;
@@ -80,6 +89,7 @@ int main(){
             if (event.type == sf::Event::Closed)
                 printer.close();
         }
+        print(printer);
     }
     return EXIT_SUCCESS;
     return 0;
