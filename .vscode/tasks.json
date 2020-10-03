@@ -6,7 +6,9 @@
 			"label": "C/C++: g++ build active file",
 			"command": "/usr/bin/g++",
 			"args": [
-				"./*.cpp",
+				"./main.cpp",
+				"./printer.cpp",
+				"./printer.h",
 				"-lsfml-graphics",
 				"-lsfml-window",
 				"-lsfml-system",

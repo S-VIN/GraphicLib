@@ -14,8 +14,8 @@ void Printer::printSquare(int Xpos, int Ypos, Color color) {
   draw(rect);
 }
 
-void Printer::bb(void) {
-  for (int i = 0; i < resolutionX; i++){
+void Printer::clearScreen() {
+  for (int i = 0; i < resolutionX; i++) {
     for (int j = 0; j < resolutionY; j++) {
       buffer[i][j] = Color::Black;
     }

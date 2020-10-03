@@ -27,5 +27,5 @@ public:
   
   void setPixel(int x, int y, Color color = Color::White);
   void show();
-  void bb( void);
+  void clearScreen();
 };
