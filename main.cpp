@@ -1,54 +1,18 @@
 #include "printer.h"
+#include "vector.h"
 using namespace sf;
 
-void print(Printer &);
+Printer printer;
+Vector v;
 
-class VectorPrint {
-private:
-  Printer * printer;
-  struct Point{
-    int x;
-    int y;
-  };
-  struct Figure{
-    Point point;
-    int a;
-  };
-  std::vector<Figure> mas;
-  void printSquare(Figure figure){
-    for(int i = figure.point.x; i < figure.point.x + figure.a; i++){
-      printer->setPixel(i, figure.point.y);
-    }
-    for(int i = figure.point.x; i < figure.point.x + figure.a; i++){
-      printer->setPixel(i, figure.point.y + figure.a);
-    }
-
-    for(int i = figure.point.y; i < figure.point.y + figure.a; i++){
-      printer->setPixel(figure.point.x, i);
-    }
-
-    for(int i = figure.point.y; i < figure.point.y + figure.a; i++){
-      printer->setPixel(figure.point.x + figure.a, i);
-    }
-
-  }
-
-public:
-  VectorPrint(Printer * printer){
-    VectorPrint:: printer = printer;
-  }
-  void square(Point point, int a){
-    mas.push_back(Figure{point, a});
-    printSquare(mas[0]);
-  }
-};
-
+void print();
 
 
 int main() {
-  Printer printer;
+  v.addSquare({50,50}, 5);
+  v.addSquare({5,10}, 10);
   while (printer.isOpen()) {
-    print(printer);
+    print();
     sf::Event event;
     while (printer.pollEvent(event)) {
       if (event.type == sf::Event::Closed)
@@ -59,14 +23,14 @@ int main() {
   return 0;
 }
 
-void print(Printer &printer) {
-  /*printer.clearScreen();
-  printer.setPixel(0, 0, Color::Red);
-  printer.setPixel(50, 50, Color::Red);
-  printer.setPixel(99, 99, Color::Red);
-  printer.show();*/
-
-  VectorPrint vectorPrint(&printer);
-  vectorPrint.square({50,50}, 10);
-
+void print() {
+  printer.clearScreen();
+  for(int i = 0; i < 100; i++){
+    for(int j=0; j < 100; j++){
+      if(v.isFilled({i, j})){
+        printer.setPixel(i, j, Color::Red);
+      }
+    }
+  }
+  printer.show();
 }

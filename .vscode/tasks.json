@@ -9,6 +9,7 @@
 				"./main.cpp",
 				"./printer.cpp",
 				"./printer.h",
+				"./vector.h",
 				"-lsfml-graphics",
 				"-lsfml-window",
 				"-lsfml-system",
