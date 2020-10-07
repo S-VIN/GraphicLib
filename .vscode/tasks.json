@@ -8,6 +8,8 @@
 			"args": [
 				"./main.cpp",
 				"./printer.cpp",
+				"./vector.cpp",
+				"./figures.h",
 				"./printer.h",
 				"./vector.h",
 				"-lsfml-graphics",

@@ -9,8 +9,7 @@ void print();
 
 
 int main() {
-  v.addSquare({50,50}, 5);
-  v.addSquare({5,10}, 10);
+  
   while (printer.isOpen()) {
     print();
     sf::Event event;
@@ -24,6 +23,8 @@ int main() {
 }
 
 void print() {
+  v.addSquare({50,50}, 5);
+  v.addSquare({5,10}, 10);
   printer.clearScreen();
   for(int i = 0; i < 100; i++){
     for(int j=0; j < 100; j++){
@@ -34,3 +35,5 @@ void print() {
   }
   printer.show();
 }
+
+
