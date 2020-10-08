@@ -1,66 +1,88 @@
 #include <string>
-enum EFIGURETYPE { LINE, DOT, ELLIPSE, SQUARE, CIRCLE, RECTUNGLE, TRIANGLE, TEXT, BITMAP };
+enum EFIGURETYPE {
+  LINE,
+  DOT,
+  ELLIPSE,
+  SQUARE,
+  CIRCLE,
+  RECTUNGLE,
+  TRIANGLE,
+  TEXT,
+  BITMAP
+};
 
 struct Point {
   int x;
   int y;
-  
-  Point(int _x = 0, int _y = 0){
+
+  Point(int _x = 0, int _y = 0) {
     x = _x;
     y = _y;
   }
 };
 
-class Figure{
+struct Figure {
   Point zeroPoint;
   EFIGURETYPE type;
-  Figure(Point _point, EFIGURETYPE _type){
+  Figure(Point _point, EFIGURETYPE _type) {
     zeroPoint = _point;
     type = _type;
   }
 };
 
-struct Dot(Point _point) : Figure(_point, ){
+struct Dot : Figure {
+  Dot(Point _point) : Figure(_point, DOT) {}
 };
 
-struct Line{
+struct Line : Figure {
   Point firstPoint;
-  Point secondPoint;
+  Line(Point _zeroPoint, Point _firstPoint) : Figure(_zeroPoint, LINE) {}
 };
 
-struct Square{
-  Point point;
+struct Square: Figure {
   int side;
+  Square(Point _point, int _side): Figure(_point, SQUARE){
+    side = side;
+  }
 };
 
-struct Rectungle{
-  Point point;
+struct Rectungle : Figure {
   Point firstSide;
   Point secondSide;
+  Rectungle(Point _point, int _firstSide, int _secondSide):Figure(_point, RECTUNGLE){
+    firstSide = _firstSide;
+    secondSide = _secondSide;
+  }
 };
 
-struct Circle{
-  Point centre;
+struct Circle : Figure {
   int diametr;
+  Circle(Point _point, int _diametr):Figure(_point, CIRCLE){
+    diametr = _diametr;
+  }
 };
 
-struct Ellipse{
-  Point centre;
+struct Ellipse : Figure {
   int firstDiametr;
   int secondDiametr;
+  Ellipse(Point _point, int _firstDiametr, int _secondDiametr):Figure(_point, ELLIPSE){
+    firstDiametr = _firstDiametr;
+    secondDiametr = _secondDiametr;
+  }
 };
 
-struct Triangle{
+struct Triangle : Figure {
   Point firstPoint;
   Point secondPoint;
-  Point thirdPoint;
+  Triangle(Point _point, Point _firstPoint, Point _secondPoint): Figure(_point, TRIANGLE){
+    firstPoint = _firstPoint;
+    secondPoint = _secondPoint;
+  }
 };
 
-struct Text{
-  std:: string text;
-  Point point;
-};
-
-struct Bitmap{
-  Point point;
+struct Text : Figure {
+  std::string text;
+  Text(Point _point, std::string _text): Figure (_point, TEXT){
+    text = _text;
+  }
 };

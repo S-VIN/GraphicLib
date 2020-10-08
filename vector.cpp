@@ -4,22 +4,32 @@ Vector::Vector() {}
 
 Vector::~Vector() {}
 
-bool Vector:: isSquareHere(Point point, Square square){
-  if(point.x <= square.point.x + square.side && 
-               point.x >= square.point.x &&
-               point.y <= square.point.y &&
-               point.y >= square.point.y - square.side){
+void Vector:: addFigure(Figure* figure){
+    figures.push_back(figure);
+};
+
+
+bool Vector:: isSquareHere(Point point, Square* square){
+  if(point.x <= square->zeroPoint.x + square->side && 
+               point.x >= square->zeroPoint.x &&
+               point.y <= square->zeroPoint.y &&
+               point.y >= square->zeroPoint.y - square->side){
                    return true;
                }
   return false;
 }
 
+Figure * Vector:: getFigure(int number){
+    return figures[number];
+};
+
+
 bool Vector:: isFilled(Point point){
     for(auto item : figures){
-        switch (item.type)
+        switch (item->type)
         {
         case SQUARE:
-            if(isSquareHere(point, item))
+            if(isSquareHere(point, (Square*)item))
                 return true;
             break;
         

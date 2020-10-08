@@ -23,8 +23,10 @@ int main() {
 }
 
 void print() {
-  v.addSquare({50,50}, 5);
-  v.addSquare({5,10}, 10);
+  Square* sqr = new Square({10, 15}, 5);
+  Square* sqr1 = new Square({50, 55}, 20);
+  v.addFigure(sqr);
+  v.addFigure(sqr1);
   printer.clearScreen();
   for(int i = 0; i < 100; i++){
     for(int j=0; j < 100; j++){
