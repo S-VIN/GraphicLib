@@ -2,8 +2,12 @@
 #include <vector>
 #include <figures.h>
 
+
+
 class Vector {
 private:
+
+
   std::vector<std::vector<int>> figures;
   std::vector<Dot> arrayOfDots;
   std::vector<Line> arrayOfLines;

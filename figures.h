@@ -1,13 +1,26 @@
 #include <string>
-enum figureType { LINE, DOT, ELLIPSE, SQUARE, CIRCLE, RECTUNGLE, TRIANGLE, TEXT, BITMAP };
+enum EFIGURETYPE { LINE, DOT, ELLIPSE, SQUARE, CIRCLE, RECTUNGLE, TRIANGLE, TEXT, BITMAP };
 
 struct Point {
   int x;
   int y;
+  
+  Point(int _x = 0, int _y = 0){
+    x = _x;
+    y = _y;
+  }
 };
 
-struct Dot{
-  Point coordinates;
+class Figure{
+  Point zeroPoint;
+  EFIGURETYPE type;
+  Figure(Point _point, EFIGURETYPE _type){
+    zeroPoint = _point;
+    type = _type;
+  }
+};
+
+struct Dot(Point _point) : Figure(_point, ){
 };
 
 struct Line{

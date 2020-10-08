@@ -15,7 +15,7 @@ bool Vector:: isSquareHere(Point point, Square square){
 }
 
 bool Vector:: isFilled(Point point){
-    for(auto item : arrayOfFigures){
+    for(auto item : figures){
         switch (item.type)
         {
         case SQUARE:
