@@ -8,6 +8,10 @@ void Vector:: addFigure(Figure* figure){
     figures.push_back(figure);
 };
 
+void Vector:: deleteFigure(int i){
+    figures.erase(figures.begin() + i);
+}
+
 
 bool Vector:: isSquareHere(Point point, Square* square){
   if(point.x <= square->zeroPoint.x + square->side && 

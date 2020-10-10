@@ -24,7 +24,7 @@ int main() {
 
 void print() {
   Square* sqr = new Square({10, 15}, 5);
-  Square* sqr1 = new Square({50, 55}, 20);
+  Square* sqr1 = new Square({50, 50}, 1);
   v.addFigure(sqr);
   v.addFigure(sqr1);
   printer.clearScreen();
@@ -36,6 +36,10 @@ void print() {
     }
   }
   printer.show();
+  delete sqr1;
+  delete sqr;
+  v.deleteFigure(0);
+  v.deleteFigure(0);
 }
 
 
