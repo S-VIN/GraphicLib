@@ -1,16 +1,17 @@
-#include "printer.h"
-#include "vector.h"
-using namespace sf;
+#include "headers/printer.h"
+#include "headers/vector.h"
+#include <SFML/Graphics.hpp>
+
+using namespace std;
 
 Printer printer;
 Vector v;
-
 void print();
 
 
-int main() {
-  
-  while (printer.isOpen()) {
+int main(){
+
+while (printer.isOpen()) {
     print();
     sf::Event event;
     while (printer.pollEvent(event)) {
@@ -40,6 +41,8 @@ void print() {
   delete sqr;
   v.deleteFigure(0);
   v.deleteFigure(0);
-}
+
+
+ }
 
 

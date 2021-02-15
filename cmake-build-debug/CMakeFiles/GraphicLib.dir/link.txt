@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/GraphicLib.dir/src/printer.cpp.o CMakeFiles/GraphicLib.dir/src/vector.cpp.o CMakeFiles/GraphicLib.dir/main.cpp.o  -o GraphicLib  -lsfml-graphics -lsfml-window -lsfml-system 
