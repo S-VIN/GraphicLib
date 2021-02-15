@@ -23,6 +23,17 @@ bool Vector:: isSquareHere(Point point, Square* square){
   return false;
 }
 
+bool Vector:: isDotHere(Point point, Dot* dot){
+    if(point.x == dot->zeroPoint.x && point.y == dot->zeroPoint.y){
+        return true;
+    }
+    return false;
+}
+
+bool Vector::isLineHere(Point point, Line *line) {
+    return false;//////////////////////////////
+}
+
 Figure * Vector:: getFigure(int number){
     return figures[number];
 };
@@ -36,7 +47,16 @@ bool Vector:: isFilled(Point point){
             if(isSquareHere(point, (Square*)item))
                 return true;
             break;
-        
+        case LINE:
+                if(isLineHere(point, (Line*)item))
+                    return true;
+                break;
+        case DOT:
+            if(isDotHere(point, (Dot*)item))
+                return true;
+            break;
+
+
         default:
             break;
         }

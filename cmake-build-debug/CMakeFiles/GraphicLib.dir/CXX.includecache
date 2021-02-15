@@ -10,14 +10,6 @@
 string
 -
 
-/home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/headers/printer.h
-SFML/Graphics.hpp
--
-iostream
--
-vector
--
-
 /home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/headers/vector.h
 iostream
 -
@@ -25,18 +17,6 @@ vector
 -
 figures.h
 /home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/headers/figures.h
-
-/home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/main.cpp
-headers/printer.h
-/home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/headers/printer.h
-headers/vector.h
-/home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/headers/vector.h
-SFML/Graphics.hpp
--
-
-/home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/src/printer.cpp
-../headers/printer.h
-/home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/headers/printer.h
 
 /home/stepan/Yandex.Disk/Documents/homeProjects/GraphicLib/src/vector.cpp
 ../headers/vector.h

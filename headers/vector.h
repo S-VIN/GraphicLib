@@ -8,6 +8,8 @@ class Vector {
 private:
 vector <Figure*> figures;
 bool isSquareHere(Point point, Square * square);
+bool isDotHere(Point point, Dot * dot);
+bool isLineHere(Point point, Line * line);
 
 public:
   Vector();

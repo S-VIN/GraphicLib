@@ -26,8 +26,10 @@ while (printer.isOpen()) {
 void print() {
   Square* sqr = new Square({10, 15}, 5);
   Square* sqr1 = new Square({50, 50}, 1);
+  Dot* sqr3 = new Dot({85, 85});
   v.addFigure(sqr);
   v.addFigure(sqr1);
+  v.addFigure(sqr3);
   printer.clearScreen();
   for(int i = 0; i < 100; i++){
     for(int j=0; j < 100; j++){
